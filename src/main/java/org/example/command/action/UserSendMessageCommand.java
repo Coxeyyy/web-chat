@@ -19,8 +19,8 @@ public class UserSendMessageCommand implements Command {
     @Override
     public Result execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        String message = request.getParameter("message");
         User user = (User) session.getAttribute("user");
+        String message = request.getParameter("message");
         if (user.isWriteMessages() && !message.isEmpty()) {
             DataBase.listMessage.add(new Message(user.getLogin(), message));
         }

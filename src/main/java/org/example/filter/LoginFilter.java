@@ -1,6 +1,5 @@
 package org.example.filter;
 
-import org.example.command.action.LoginCommand;
 import org.example.data.DataBase;
 import org.example.data.User;
 
@@ -11,7 +10,6 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Optional;
 
