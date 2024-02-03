@@ -18,7 +18,7 @@ public class BanUnbanUserMessageCommand implements Command {
     public Result execute(HttpServletRequest request, HttpServletResponse response) {
         String loginInput = request.getParameter("loginInput");
         Optional<User> user = DataBase.findUserByLogin(loginInput);
-        if(user.isPresent() && user.get().isWriteMessages()) {
+        if (user.isPresent() && user.get().isWriteMessages()) {
             user.get().setWriteMessages(false);
         } else {
             user.get().setWriteMessages(true);

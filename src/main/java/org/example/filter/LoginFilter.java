@@ -29,14 +29,12 @@ public class LoginFilter implements Filter {
         User userSession = (User) httpServletRequest.getSession().getAttribute("user");
         String loginInput = request.getParameter("loginInput");
         Optional<User> user = DataBase.findUserByLogin(loginInput);
-        // Ваша релизация фильтра входа пользователя на сайт
-        if (userSession == null) { // Проверка, что пользователь авторизован (необходимо реализовать!!!)
-            if(!user.isPresent()){
+        if (userSession == null) {
+            if (user.isEmpty()) {
                 HttpServletRequest httpServletRequest1 = (HttpServletRequest) request;
                 httpServletRequest1.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
             }
         }
-
         filterChain.doFilter(request, response);
     }
 

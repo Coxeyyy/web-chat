@@ -1,11 +1,12 @@
 package org.example.data;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 public final class DataBase {
-    public static List<User> listUser = new CopyOnWriteArrayList<>();
+    public static List<User> listUser = new ArrayList<>();
     public static List<Message> listMessage = new CopyOnWriteArrayList<>();
 
     private DataBase() {

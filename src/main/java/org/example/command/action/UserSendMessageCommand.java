@@ -21,7 +21,7 @@ public class UserSendMessageCommand implements Command {
         HttpSession session = request.getSession();
         String message = request.getParameter("message");
         User user = (User) session.getAttribute("user");
-        if(user.isWriteMessages() && !message.isEmpty()) {
+        if (user.isWriteMessages() && !message.isEmpty()) {
             DataBase.listMessage.add(new Message(user.getLogin(), message));
         }
         request.getServletContext().setAttribute("listMessage", DataBase.listMessage);

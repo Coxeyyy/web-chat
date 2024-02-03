@@ -13,7 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import java.util.Optional;
 
-import static org.example.Resources.*;
+import static org.example.Resources.COMMAND_SHOW_ADMIN_PANEL;
+import static org.example.Resources.COMMAND_SHOW_CHAT_PAGE;
+import static org.example.Resources.COMMAND_SHOW_LOGIN_PAGE;
 
 public class LoginCommand implements Command {
 
@@ -24,11 +26,11 @@ public class LoginCommand implements Command {
         Optional<User> user = DataBase.findUserByLogin(loginInput);
         HttpSession session = request.getSession();
         request.getServletContext().setAttribute("listUser", DataBase.listUser);
-        if(user.isPresent() && user.get().getPassword().equals(passwordInput)) {
+        if (user.isPresent() && user.get().getPassword().equals(passwordInput)) {
             user.get().setOnline(true);
             request.getSession(true);
             session.setAttribute("user", user.get());
-            if(user.get().getUserType().equals(UserType.ADMIN)) {
+            if (user.get().getUserType().equals(UserType.ADMIN)) {
                 return new RedirectResult(COMMAND_SHOW_ADMIN_PANEL);
             }
             return new RedirectResult(COMMAND_SHOW_CHAT_PAGE);
